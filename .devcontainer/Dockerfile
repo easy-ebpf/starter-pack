@@ -1,7 +1,5 @@
-# From official php image.
+# From official golang:alpine image.
 FROM golang:alpine
-
-LABEL org.opencontainers.image.source="https://github.com/easy-ebpf/tutorial-simple-example"
 
 RUN mkdir -p /workspace/cli
 
@@ -10,7 +8,7 @@ RUN apk --update add --no-cache curl git vim fish tmux neovim wget make
 
 RUN \
     # Install persistent / runtime deps
-    apk --update add --no-cache clang llvm bcc bcc-tools gcompat libbpf-dev linux-headers bpftool libbpf
+    apk --update add --no-cache clang llvm bcc bcc-tools gcompat libbpf-dev linux-headers bpftool libbpf argp-standalone
 
 # Make fish the default shell
 RUN sed -i 's|/bin/sh$|/usr/bin/fish|' /etc/passwd

@@ -1,26 +1,32 @@
 # tutorial-simple-example
 
-## 1. Observe the file structure
-- `minimal.bpf.c` :  
-  This is the eBPF program we're going to load into the Kernel.
+## 0. Setting up environment
+### a. codespace
 
-- `minimal.c` :  
-  This file is our frontend in the userspace, and it is responsible for loading the eBPF program into Kernel.
+### b. devcontainer
+- https://code.visualstudio.com/docs/devcontainers/tutorial
 
-## 2. Running the eBPF program
+### c. Virtual Machine (if you're on macOS or Windows)
+Some eBPF program may not work inside the container, therefore you may want to setup a virtual machine:
+
+## 1. Running the eBPF program
 
 ```bash
-make run
+make run <The name of your app>
 ```
 
-## 3. Observe the log from the system pipe
+e.g. If we're running `minimal` eBPF program, the command would be:
+```bash
+make run minimal
+```
+
+## 2. Utility shortcut
 
 ```bash
 make trace
 ```
 
-## 4. Try to modify the eBPF program
-
-Try to modify the eBPF program, and compile & run it again.  
-Does the output change with your modification?
-
+This shortcut is equivalent to the following command:
+```bash
+bpftool prog trace log
+```
